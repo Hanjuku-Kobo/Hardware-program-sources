@@ -13,6 +13,21 @@ Bluetooth UUID :
 #define CHARACTERISTIC_READ_UUID  "c8f8d86f-f03a-428f-8917-39384ad98e4b"
 ```  
 
+必要データ識別名  
+ : BLECharacteristicCallbacks{}
+```
+// 電圧が欲しい場合        -> battery
+if (value.equals("battery")) {}
+```
+ : loop()
+```
+// 加速度データが欲しい場合 -> acceleration
+if (useExtensions.equals("acceleration")) {}
+
+// 圧力データが欲しい場合   -> pressure
+if (useExtensions.equals("pressure")) {}
+```
+
 加速度センサのデータ形式 :
 ```
 String getCalcuAccel(float d) {
