@@ -217,7 +217,7 @@ void setup() {
 
     // (channel, size)
     ledcWrite(0, 32);
-    ledcWrite(1, 32);
+    ledcWrite(1, 96);
     ledcWrite(2, 32);
   }
 
