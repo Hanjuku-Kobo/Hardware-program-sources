@@ -1,24 +1,28 @@
 ## 使い方
+
+1. このデバイスにBLE規格で接続する
+2. 欲しいデータの文字列をCharacteristicsを通して送信する
+3. Characteristics.notify()で送られてくるデータを受け取る
+
 Bluetooth UUID :
 ```  
-#define SERVICE_UUID              "4fafc201-1fb5-459e-8fcc-c5c9c331914b"
-#define CHARACTERISTIC_WRITE_UUID "b62c1ffa-bdd8-46ea-a378-d539cf405d93"
-#define CHARACTERISTIC_READ_UUID  "c8f8d86f-f03a-428f-8917-39384ad98e4b"
+SERVICE_UUID              "4fafc201-1fb5-459e-8fcc-c5c9c331914b"
+CHARACTERISTIC_WRITE_UUID "b62c1ffa-bdd8-46ea-a378-d539cf405d93"
+CHARACTERISTIC_READ_UUID  "c8f8d86f-f03a-428f-8917-39384ad98e4b"
 ```  
 
 必要データ識別名  
  : BLECharacteristicCallbacks{}
 ```
-// 電圧が欲しい場合        -> battery
-if (value.equals("battery")) {}
+"battery"
 ```
  : loop()
 ```
-// 加速度データが欲しい場合 -> acceleration
-if (useExtensions.equals("acceleration")) {}
+//加速度データが欲しい場合
+"acceleration"
 
-// 圧力データが欲しい場合   -> pressure
-if (useExtensions.equals("pressure")) {}
+// 圧力データが欲しい場合
+"pressure"
 ```
 
 加速度センサのデータ形式 :
