@@ -19,5 +19,5 @@ ESP32を使って開発したので、Pinなどはそれに基づいた設定に
 [Bluetooth Serial ver](https://github.com/Hanjuku-Kobo/Hardware-program-sources/blob/main/Serial_BT_Controller/README.md)
 
 #### 違い
-最新デバイスには、電圧監視システムが追加されているが旧デバイスの回路にはそれがない
+最新デバイスには、電圧監視システムが追加されているが旧デバイスの回路にはそれがない  
 Bluetoothの規格が異なる
