@@ -15,6 +15,7 @@ CHARACTERISTIC_READ_UUID  "c8f8d86f-f03a-428f-8917-39384ad98e4b"
 ```
 // バッテリー電圧
 "battery"
+
 //加速度データ
 "acceleration"
 
