@@ -78,7 +78,7 @@ class MyCharacteristicCallbacks : public BLECharacteristicCallbacks {
         pCharacteristicWrite->notify();
       } else {
         // 拡張機能用の変数
-      useExtensions = value;
+        useExtensions = value;
       }
     }
 };
@@ -145,8 +145,6 @@ void startDeepSleep() {
 void setup() {
   // シリアルモニターの初期化をする
   Serial.begin(115200);
-
-  while ( !Serial ) {}
 
   // (channel, frequency, ?bit)
   ledcSetup(0, 12800, 8);
@@ -279,7 +277,7 @@ void loop() {
       delay(3);
       
     } else {
-      delay(2000);
+      delay(1000);
     }
   }
   // disconnecting
