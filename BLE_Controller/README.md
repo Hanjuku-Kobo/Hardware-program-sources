@@ -23,6 +23,19 @@ CHARACTERISTIC_READ_UUID  "c8f8d86f-f03a-428f-8917-39384ad98e4b"
 "pressure"
 ```
 
+バッテリー電圧のデータ形式 :
+```
+float getBattery(){
+  int d = analogRead(33);
+  
+  const int R1 = 10000; // 10kΩ
+  const int R2 = 10000; // 10kΩ
+  
+  // 例) 3.0
+  return d * (R1+R2) / R2 * (3.7/4096);
+}
+```
+
 加速度センサのデータ形式 :
 ```
 String getCalcuAccel(float d) {
@@ -78,16 +91,3 @@ String result(
         + ","
         + "0" );
 ```  
-
-バッテリー電圧のデータ形式 :
-```
-float getBattery(){
-  int d = analogRead(33);
-  
-  const int R1 = 10000; // 10kΩ
-  const int R2 = 10000; // 10kΩ
-  
-  // 例) 3.0
-  return d * (R1+R2) / R2 * (3.7/4096);
-}
-```
