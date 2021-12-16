@@ -11,17 +11,14 @@ CHARACTERISTIC_WRITE_UUID "b62c1ffa-bdd8-46ea-a378-d539cf405d93"
 CHARACTERISTIC_READ_UUID  "c8f8d86f-f03a-428f-8917-39384ad98e4b"
 ```  
 
-必要データ識別名  
- : BLECharacteristicCallbacks{}
+データ識別名 :  
 ```
+// バッテリー電圧
 "battery"
-```
- : loop()
-```
-//加速度データが欲しい場合
+//加速度データ
 "acceleration"
 
-// 圧力データが欲しい場合
+// 圧力データ
 "pressure"
 ```
 
