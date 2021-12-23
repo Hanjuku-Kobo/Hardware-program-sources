@@ -154,7 +154,7 @@ void setup() {
 void loop() {
   // BluetoothSerialに書き込まれたか
   if (SerialBT.available()) {
-    String value = (String) SerialBT.read();
+    String value = (String) SerialBT.readString();
     Serial.println(value);
 
     if (value.equals("battery")) {
