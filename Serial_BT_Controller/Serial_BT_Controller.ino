@@ -86,7 +86,7 @@ void startDeepSleep() {
   useExtensions = "";
   
   //割り込み停止
-  detachInterrupt(13);
+  detachInterrupt(digitalPinToInterrupt(BUTTON));
 
   //deep_sleep復帰ボタン設定
   esp_sleep_enable_ext0_wakeup(GPIO_NUM_13, HIGH);

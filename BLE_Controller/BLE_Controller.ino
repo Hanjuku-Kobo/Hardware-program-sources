@@ -28,7 +28,7 @@ const int pinZ = 32;
 float ms2 = 9.8;
 
 // 電源電圧5V時のオフセット電圧(0G = 2.5V = 2500mV)
-float offset_voltage = 2290.0; 
+float offset_voltage = 2290.0;
 
 BLEServer* pServer = NULL;
 BLECharacteristic* pCharacteristicWrite = NULL;
@@ -52,28 +52,28 @@ class MyServerCallbacks: public BLEServerCallbacks {
 };
 
 // リポバッテリーの電圧を計算
-float getBattery(){
+float getBattery() {
   int d = analogRead(33);
-  
+
   const int R1 = 10000; // 10kΩ
   const int R2 = 10000; // 10kΩ
-  
-  return d * (R1+R2) / R2 * (3.7/4096);
+
+  return d * (R1 + R2) / R2 * (3.7 / 4096);
 }
 
 // タブレットの設定からBluetoothを接続しなおしたらつながった?
 // write or read の callback
 class MyCharacteristicCallbacks : public BLECharacteristicCallbacks {
     void onWrite(BLECharacteristic* pCharacteristic) {
-      
+
       std::string stdValue = pCharacteristic->getValue();
       String value = stdValue.c_str();
-      
+
       Serial.println(value);
 
       if (value.equals("battery")) {
         String battery = (String) getBattery();
-        
+
         pCharacteristicWrite->setValue(battery.c_str());
         pCharacteristicWrite->notify();
       } else {
@@ -131,9 +131,9 @@ void print_wakeup_reason() {
 
 void startDeepSleep() {
   useExtensions = "";
-  
+
   //割り込み停止
-  detachInterrupt(13);
+  detachInterrupt(digitalPinToInterrupt(BUTTON));
 
   //deep_sleep復帰ボタン設定
   esp_sleep_enable_ext0_wakeup(GPIO_NUM_13, HIGH);
@@ -244,28 +244,27 @@ void loop() {
       pCharacteristicWrite->notify();
 
       // bluetooth stack will go into congestion, if too many packets are sent, in 6 hours test i was able to go as low as 3ms
-    delay(3);
-    
-    } 
+      delay(3);
+
+    }
     else if (useExtensions.equals("pressure")) {
       double volt = getVoltage(analogRead(pinY));
 
       /*
-       * float battery = getBattery();
-       * 
-       * Serial.println(" バッテリーの電圧 : " + (String) battery);
-       * 
-       * 
-       */
-      
-      
+         float battery = getBattery();
+
+         Serial.println(" バッテリーの電圧 : " + (String) battery);
+
+
+      */
+
       Serial.print("出力電圧 : " + (String) volt);
-      
+
 
       String result(
-        useExtensions 
+        useExtensions
         + ","
-        + (String) volt 
+        + (String) volt
         + ","
         + "0"
         + ","
@@ -275,7 +274,7 @@ void loop() {
       pCharacteristicWrite->notify();
 
       delay(3);
-      
+
     } else {
       delay(1000);
     }
