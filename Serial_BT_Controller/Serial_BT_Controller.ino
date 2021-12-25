@@ -141,10 +141,18 @@ void setup() {
     // 割り込み処理
     attachInterrupt(BUTTON, startDeepSleep, RISING);
 
-    // (channel, size)
-    ledcWrite(0, 32);
-    ledcWrite(1, 96);
-    ledcWrite(2, 32);
+    if (getBattery() >= 3.3) {
+      // (channel, size)
+      // 緑
+      ledcWrite(0, 32);
+      ledcWrite(1, 96);
+      ledcWrite(2, 64);
+    } else {
+      // 赤黄
+      ledcWrite(0, 128);
+      ledcWrite(1, 32);
+      ledcWrite(2, 0);
+    }
   }
 
   // 拡張機能名をリセット
